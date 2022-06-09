@@ -1,48 +1,164 @@
-//#include <iostream> 
-//// iostream을 포함한다, iostream은 C++의 표준 라이브러리, 그렇기 때문에 <>를 사용, 우리가 따로 지정한 헤더 파일을 include 할 떄는 ""
-//// 전처리 실행시 #
-//
-//int main( int argc, char* argv[]) 
-//// int main은 시작할 때 필요한 커맨드 값 지정, argc (매개 변수) (갯수만) argv(argc가 5개면 argv는 6개 (0번이 프로그램 이름이기 때문에)) 나중에 할듯
+#include <iostream>
+
+using namespace std;
+
+struct SalesRec 
+{ // 62Byte
+	char pID[10]; // 10Byte
+	int dYear, dMonth, dData; // 3 * 4 Byte 
+	char deliverAddr[40]; // 40Byte
+
+};
+
+struct TimeRec
+{
+	int hours;
+	int minutes;
+	int seconds;
+};
 //{
-//	
+//	//배열에 각배열 번호의 값을 넣어주고 전부 합한 값을 반환
+//	double GetArraySum(double arr[], int n);
+//	void printSum(double sum);
 //
-//	int value = 0; //value가 변수 int는 변수의 타입
-//	int a1(0); //또다른 초기화 방법
-//	int a2 = { 0 }; // *이게 최신
-//	int a3{ 0 }; // *이게 최신
+//	// 분산 구하기
+//	double variance(double arr[], int n);
 //
-//	
+//	// 두개의수를 서로 바꾸기
+//	void SwapValues(int& x, int& y);
 //
-//	int value1; //기본형
-//	signed int value2; //음수와 양수 둘다 표현 기본이 signed int인데 생략 돼서 표현 된것.
-//	unsigned int value3; //양수만 표현
-//	float value4; //소수점
-//	char c1 = 'A';// 문자열 하나만 그럴땐 작은 따옴표'   ' 문자열( " " )은 크기 상 못들어 가기 때문
-//	c1 = '\101'; //유니코드로 변경 10진수 'A'
-//	c1 = '\x41'; //유니코드로 변경 16진수 'A' 이런 경우는 전문적으로 데이터 용량을 줄이기 위해 사용, 지금 공부의 과정에서 중요하지는 않다.
+//	void PrSalesRec(SalesRec & srec);
 //
-//	value1 = 0b1001011; //0b는 binary 2진법
-//	value1 = 0123; //앞에 0만 붙이면 8진법
-//	value1 = 0x9f; //앞에 0x를 붙이면 16진법
-//
-//	
-//
-//	std::cout << "Hello, world" << std::endl;
-//	std::cout << "There are " << value1 << " ways" << std::endl;
-//	std::cout << "I love you" << std::endl;
-//	std::cout << "A\nBC\nDEF\nGH" << std::endl; // \n 문장 사이에 넣어도 상관 없다. \n은 반드시 소문자로
-//	std::cin >> value1; //입력 스트림
-//
-//	//std::cout << "Hello, World" << std::endl; std는 라이브러리에 있는 용어
-//
-//	return 0; //없어도 된다. 하지만 기본적으로 필요
+	//시간 t1에 t2를 더한다.
+	/*void AddTime(TimeRec & t1, const TimeRec & t2);*/
+//	//시간 t1에 minutes 분을 더한다.
+	void AddTime(TimeRec & t1, const int& minutes, const int& seconds);
 //}
-////컴파일 하고 링크까지 하는 전과정을 빌드라고 한다
-////솔루션 빌드 F7  -> 솔루션 안에 있는 .CPP들을 다 빌드 해준다
-////솔루션 다시 빌드 ->  빌드 했던 것들을 지우고 다시 빌드 해준다
-////프로젝트 이름 빌드 -> 프로젝트 별 빌드 가능
-////COMPILE (ctrl + F7)->해당 cpp 하나만 빌드
-////Debug와 release의 차이점 : 개발 하면서 눈으로 확인 할 수 있는것 Debug, 유저들에게 배포 할 때 최적화를 위해(동작하는 부분만) Release, 기본적으로 Debug 사용
+
+int main()
+{
+	//{
+	//	//double a[50], b[100];
+	//	//double sum = 0;
+
+
+	//	//sum = GetArraySum(a, 50);
+
+	//	//printSum(sum);
+
+	//	//sum = GetArraySum(b, 100);
+
+	//	//cout << "Sum = " << sum << endl;
+
+	//	//return 0;
+	//}
+	//{
+	//	int a, b{ 0 };
+	//	cout << "두개의 수를 입력하세요 : ";
+	//	cin >> a >> b;
+	//	SwapValues(a, b);
+	//	cout << "a = " << a << " b = " << b << endl;
+	//}
+	//SalesRec stRec; // stRec 함수는 62Byte를 차지한다.  int num
+	//strcpy_s(stRec.pID, "123456789"); // 오른족 문자열이 왼쪽 변수에 복사가 된다. (string 배우기전에 c언어로 한번 써본것)
+	//stRec.dYear = 2022;
+	//stRec.dMonth = 6;
+	//stRec.dData = 8;
+	//strcpy_s(stRec.deliverAddr, "경기도 부천");
+	//PrSalesRec(stRec); // 62Byte + 62Byte
+	{
+		TimeRec time1 = { 2, 20, 20 };
+		TimeRec time2 = { 1, 55, 40 };
+
+		/*cout << time1.hours << "시간 " << time1.minutes << "분  " << time1.seconds << "초 + ";
+		cout << time2.hours << "시간 " << time2.minutes << "분  " << time2.seconds << "초 = ";
+		AddTime(time1, time2);
+		cout << time1.hours << "시간 " << time1.minutes << "분" << time1.seconds << "초" << endl;*/
+
+		int a{ 0 };
+		int b{ 0 };
+		
+		cin >> a >> b;
+		cout << time1.hours << "시간 " << time1.minutes << "분  " << time1.seconds << "초 + ";
+		cout << a << "분  " << b << "초 = ";
+		AddTime(time1, a, b);
+		cout << time1.hours << "시간 " << time1.minutes << "분" << time1.seconds << "초" << endl;  //Addtime 이라 함수이름은 같지만 안의 타입 차이때문에 컴파일러시 알아서 구분 해준다,
+
+		/*void func(int a, int b);
+		int func(int a, int b); 하지만 반환값은 틀리면 안된다 */
+
+	}
+
+}
+
+// 배열에 각 배열 번호의 값을 넣어 주고 전부 합한 값을 반환
+
+double GetArraySum(double arr[], int n)
+{
+	double sum = 0;
+	for (int i = 0; i < n; ++i)
+	{
+		arr[i] = i;
+		sum += arr[i];
+	}
+
+	return sum;
+
+}
+
+void printSum(double sum)
+{
+
+	cout << "Sum = " << sum << endl;
+}
+
+// 분산 구하기
+double variance(double arr[], int n)
+{
+	double sum = 0, sqSum = 0;
+	for (int i = 0; i < n; ++i)
+	{
+		sum += arr[i];
+		sqSum += arr[i] * arr[i];
+	}
+
+	double result = sqSum / n - sum / (n * n);
+	return result;
+}
+
+void SwapValues(int &x, int &y)
+{
+	int temp = x;
+	x = y;
+	y = temp;
+	
+}
+
+void PrSalesRec(SalesRec &srec) // 64비트 CPU면 8Byte
+{
+	cout << "품목코드 : " << srec.pID << endl;
+	cout << "품목코드 : " << srec.dYear << "년 " << endl;
+	cout << srec.dMonth << "월 "<< srec.dData << "일" << endl;
+	cout << "배달주소 : " << srec.deliverAddr << endl;
+}
+
+//void AddTime(TimeRec& t1, const TimeRec& t2 )
+//{
+//	t1.seconds += t2.seconds;
+//	t1.minutes += t2.minutes +(t1.seconds / 60);
+//	t1.hours += t2.hours + (t1.minutes / 60);
+//	t1.minutes %= 60;
+//	t1.seconds %= 60;
+//	
 //
-////  \n \r \t \\ \*
+//}
+
+void AddTime(TimeRec& t1, const int& minutes, const int& seconds)
+{
+	t1.seconds += seconds;
+	t1.minutes += minutes + t1.seconds / 60;
+	t1.hours += t1.minutes / 60;
+	t1.minutes %= 60;
+	t1.seconds %= 60;
+
+}
