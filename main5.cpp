@@ -82,6 +82,7 @@
 //		//               double
 //		//intvar =       double
 //		//                 int
+//		cout << "intvar : " << intvar << endl; // 27
 //	}
 //	{
 //		//static_cast : 실행 중에 형 검사를 하지 않으며, 컴파일 할 때 수식에 지정된 그대로 변환함

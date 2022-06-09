@@ -39,9 +39,21 @@
     <ClCompile Include="main8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main9.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main10.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="employeestruct.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleClass.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
